@@ -4,6 +4,7 @@ import random
 import time
 
 
+
 def producer(shared_queue, condition):
     while True:
         # Generate a random integer between 1 and 10
