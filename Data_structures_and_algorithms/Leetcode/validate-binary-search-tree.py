@@ -1,23 +1,21 @@
+# Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-def isBSTUtil(root: TreeNode, min_val=float('-inf'), max_val=float('inf')) -> bool:
-    if not root:
+def is_bst(node, min_val=float('-inf'), max_val=float('inf')):
+    if not node:
         return True
-    if root.val <= min_val or root.val >= max_val:
+
+    if not min_val < node.val < max_val:
         return False
-    return (isBSTUtil(root.left, min_val, root.val) and
-            isBSTUtil(root.right, root.val, max_val))
 
-def isBST(root: TreeNode) -> bool:
-    return isBSTUtil(root)
+    return (is_bst(node.left, min_val, node.val) and
+            is_bst(node.right, node.val, max_val))
 
 
-#
-# class Solution:
-#     def isValidBST(self, root: [TreeNode]) -> bool:
-
-print(True+True+True)
+class Solution:
+    def isValidBST(self, root: [TreeNode]) -> bool:
+        return is_bst(root)
